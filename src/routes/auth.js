@@ -44,12 +44,12 @@ authRouter.post('/login', async (req, res) => {
             const token = await user.getJwt();
 
             res.cookie("token", token);
-            res.send("Login Successfully");
+            res.send(user);
         } else {
             throw new Error("Invalid Credentials");
         }
     } catch (err) {
-        res.status(400).send("Something went wrong" + err.message);
+        res.status(400).send("Invalid Credentials");
     }
 });
 
